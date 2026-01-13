@@ -22,5 +22,5 @@ Route::get('/sen',function(){
 Route::view("/aj","second");
 Route::view("/ajax","ajp");
 
-Route::get("/encrypt/{st}",[HideController::class,"enc"])->name("");
+Route::get("/encrypt/{st}",[HideController::class,"enc"])->name("encrypt");
 Route::get("/decrypt/{st}",[HideController::class,"dec"])->name("decrypt");
