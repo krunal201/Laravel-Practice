@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HideController;
 use App\Http\Controllers\MailController;
 use App\Mail\TestMail;
 use Illuminate\Support\Facades\Route;
@@ -20,3 +21,6 @@ Route::get('/sen',function(){
 
 Route::view("/aj","second");
 Route::view("/ajax","ajp");
+
+Route::get("/encrypt/{st}",[HideController::class,"enc"])->name("");
+Route::get("/decrypt/{st}",[HideController::class,"dec"])->name("decrypt");
