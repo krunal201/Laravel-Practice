@@ -23,7 +23,7 @@
                     document.getElementById("demo").innerHTML = this.responseText;
                 }
             };
-            var path = '../resources/views/normal.txt';
+            var path = '../resources/views/n.txt';
             xhttp.open("GET", path, true);
             xhttp.send();
         }
