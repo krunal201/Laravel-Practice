@@ -15,7 +15,15 @@
         <p id="demo"></p>
     </div>
 
-    <script>
+    <div>
+        <h1>Fetch data from XML file.</h1>
+        <button onclick="loadXMLDoc()">Click</button>
+        <ul id="list">
+
+        </ul>
+    </div>
+ <script>
+        //Load a normal text file
         function loadDoc() {
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function () {
@@ -24,8 +32,26 @@
                 }
             };
             var path = '../resources/views/n.txt';
-            xhttp.open("GET", path, true);
+            // xhttp.open("GET", path, true);
+            xhttp.open("POST",path,true);
             xhttp.send();
+        }
+
+        //Load an xml file
+        function loadXMLDoc(){
+            var xhttp=new XMLHttpRequest();
+            xhttp.onreadystatechange=funtion(){
+                if(this.readyState==4 && this.status==200){
+                    var xmlContent=this.responseXML;
+                    var books=xmlDoc.getElementByTagName("book");
+                    document.getElementById("list").innerHTML="";
+
+                    var li=document.createElement("li");
+                    li.innerHTML="Title"+title+"Author"+author;
+
+                    document.getElementById("list").appendChild(li);
+                }
+            };
         }
     </script>
 </body>
