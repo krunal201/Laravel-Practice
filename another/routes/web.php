@@ -19,3 +19,4 @@ Route::get('/sen',function(){
 });
 
 Route::view("/aj","second");
+Route::view("/ajax","ajp");
