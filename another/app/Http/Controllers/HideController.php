@@ -10,6 +10,7 @@ class HideController extends Controller
     public function enc($st){
         $a=Crypt::encryptString($st);
         echo "Parameter after encryption: $a";
+        return view("third");
     }
 
     public function dec($st){

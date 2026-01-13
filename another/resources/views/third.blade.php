@@ -8,7 +8,8 @@
 <body>
     <!-- When there is no desire, all things are at peace. - Laozi -->
     <div>
-        <a href=""></a>
+        <br><br>
+        <a href="{{-- route("decrypt") --}}">Decrypt</a>
     </div>
 </body>
 </html>
