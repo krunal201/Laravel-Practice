@@ -22,7 +22,6 @@
             {{ $message }}
             @enderror
             <br>
-
             <button>Login</button>
         </form>
     </div>
