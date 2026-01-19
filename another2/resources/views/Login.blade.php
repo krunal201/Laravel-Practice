@@ -9,20 +9,23 @@
     <div>
         <form action="{{ route("check") }}" method="post">
             @csrf
-            <label for="">Email</label>
+            
+            <label for="emil">Email</label>
             <input type="text" name="email" id="">
-            @error("email")
+            <!-- @error("email")
             {{ $message }}
-            @enderror
+            @enderror -->
             <br>
 
-            <label for="">Password</label>
+
+            <label for="Password">Password</label>
             <input type="text" name="password" id="">
-            @error("password")
+            <!-- @error("password")
             {{ $message }}
-            @enderror
+            @enderror -->
             <br>
-            <button>Login</button>
+            <!-- <button>Login</button -->
+             <button type="submit">submit</button>
         </form>
     </div>
 </body>

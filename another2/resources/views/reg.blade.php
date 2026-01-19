@@ -9,6 +9,7 @@
     <div>
         <form action="{{ route("register") }}" method="POST">
             @csrf
+            <br>
              <label for="">Name</label>
             <input type="text" name="name" id="">
             @error("name")
@@ -17,14 +18,14 @@
             <br>
 
             <label for="">Email</label>
-            <input type="email" name="email" id="">
+            <input type="text" name="email" id="">
             @error("email")
             {{ $message }}
             @enderror
             <br>
 
             <label for="">Password</label>
-            <input type="password" name="password" id="">
+            <input type="text" name="password" id="">
             @error("password")
             {{ $message }}
             @enderror
@@ -32,5 +33,8 @@
             <button>Register</button>
         </form>
     </div>
+    <!-- <script>
+        axios.defaults.headers.common['X-CSRF-TOKEN'] = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+    </script> -->
 </body>
 </html>
