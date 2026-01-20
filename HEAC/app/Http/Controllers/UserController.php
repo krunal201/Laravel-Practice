@@ -23,7 +23,7 @@ class UserController extends Controller
         $userdata=User::create($valid);
         if($userdata){
             Event(new TestingEvent($userdata));
-            // return "register";
+            return redirect("/");
         }else{
             return "can't register";
         }

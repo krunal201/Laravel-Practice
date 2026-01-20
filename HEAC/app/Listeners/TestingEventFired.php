@@ -23,8 +23,8 @@ class TestingEventFired
     public function handle(TestingEvent $event)
     {
         if($event->userdata){
-            echo "register";
-            die;
+            Log::info("New User is registerd");
+            // die;
         }else{
             echo "Can't";
         }
