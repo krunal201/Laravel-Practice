@@ -9,6 +9,8 @@
     <!-- People find pleasure in different ways. I find it in keeping my mind clear. - Marcus Aurelius -->
     <div>
         <h1>Hey {{ Auth::user()->name }}</h1>
+        <br>
+        <a href="{{ route("prod") }}">Product</a>
         <a href="{{ route("logout") }}">Logout</a>
     </div>
 </body>

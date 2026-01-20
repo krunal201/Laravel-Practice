@@ -31,6 +31,8 @@
             @enderror
             <br>
             <button>Register</button>
+
+            <p>Already have an account? </p><a href="{{ route('check') }}">Login</a>
         </form>
     </div>
     <!-- <script>
