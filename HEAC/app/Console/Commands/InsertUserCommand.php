@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use Faker\Factory as Faker;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class InsertUserCommand extends Command
 {
@@ -27,11 +28,14 @@ class InsertUserCommand extends Command
      */
     public function handle()
     {
+        
         $faker = Faker::create();
+        $password=$faker->randomElement(["123456","456789","987410"]);
+        $hasedpassword=hash::make($password);
         User::create([
             "name"=>$faker->name,
             "email"=>$faker->email,
-            "password"=>$faker->randomElement(["123456","456789","987410"]),
+            "password"=>$hasedpassword
         ]);
         $this->info("User Created");
     }
