@@ -9,7 +9,7 @@
     <h1>All Events</h1>
 
     @foreach ($data as $d)
-        
+        {{ $d->name }}
     @endforeach
 </body>
 </html>
