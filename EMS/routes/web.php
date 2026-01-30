@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\EventController;
 use App\Models\Categories;
+use App\Models\Events;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -56,4 +57,8 @@ Route::view("/users","users")->name('users');
 
 //Registration
 Route::view("/registrations","registrations")->name('registration');
+
+// routes/web.php
+
+Route::view('/dish', 'demo')->name('dish-table'); 
 
