@@ -34,12 +34,18 @@ Route::put("/updatecategories/{id}",[CategoryController::class,'updateCategory']
 Route::delete("/deletecategories/{id}",[CategoryController::class,'deleteCategory'])->name('category.delete');
 
 //Event routes
-Route::view("/events","events")->name('events');
-Route::get("/event",[EventController::class,'showAllEvent'])->name("AllEvents");
+// Route::view("/events","events")->name('events');
+Route::get("/events",[EventController::class,'showAllEvent'])->name("event.AllEvents");
 
-
+//Add Events
 Route::view("/upload","uploadevent");
-Route::post("/upload",[EventController::class,'addEvent'])->name('uploadEvent');
+Route::post("/upload",[EventController::class,'addEvent'])->name('event.uploadEvent');
+
+//Update Events
+Route::get('/updateEvent/{id}',[EventController::class,'updateEventView'])->name('event.updateEventView');
+Route::put("/updateEvent/{id}",[EventController::class,'updateEvent'])->name('event.updateEvent');
+//Delete Events
+Route::delete('/deleteevent/{id}',[EventController::class,'deleteEvent'])->name('event.deleteEvent');
 
 //User
 Route::view("/users","users")->name('users');
