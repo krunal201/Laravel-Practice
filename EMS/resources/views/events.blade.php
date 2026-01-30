@@ -8,6 +8,12 @@
 <body>
     <h1>All Events</h1>
 
+    <nav>
+        <ul>
+            <li><a href="{{ route('event.uploadEvent') }}">Add Event</a></li>
+        </ul>
+    </nav>
+
     <table border="1">
         <tr>
             <th>ID</th>
@@ -33,11 +39,17 @@
                 <td>
                     <img src="{{ asset('storage/'.$d->image) }}" alt="Image" srcset=""  width="350px" height="250px">
                 </td>
-                <td><a href="">Update</a></td>
-                <td>Delete</td>
+                <td><a href="{{ route('event.updateEventView',$d->id) }}">Update</a></td>
+                <td>
+                    <form action="{{ route('event.deleteEvent',$d->id) }}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
         </tr>
+        @endforeach
     </table>
-    @endforeach
 </body>
 </html>
 <div>
