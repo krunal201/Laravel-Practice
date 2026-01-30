@@ -35,6 +35,7 @@ Route::delete("/deletecategories/{id}",[CategoryController::class,'deleteCategor
 
 //Event routes
 // Route::view("/events","events")->name('events');
+Route::get("/events",[EventController::class,'index']);
 Route::get("/events",[EventController::class,'showAllEvent'])->name("event.AllEvents");
 
 //Add Events
@@ -46,6 +47,9 @@ Route::get('/updateEvent/{id}',[EventController::class,'updateEventView'])->name
 Route::put("/updateEvent/{id}",[EventController::class,'updateEvent'])->name('event.updateEvent');
 //Delete Events
 Route::delete('/deleteevent/{id}',[EventController::class,'deleteEvent'])->name('event.deleteEvent');
+
+//Search Event
+Route::get('/search',[EventController::class,'searchEvent'])->name('event.searchEvent');
 
 //User
 Route::view("/users","users")->name('users');
