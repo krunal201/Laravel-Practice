@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="{{ route('uploadEvent') }}" method="post" enctype="multipart/form-data">
+    <form action="{{ route('event.uploadEvent') }}" method="post" enctype="multipart/form-data">
         @csrf
         Title: <input type="text" name="title" id=""><br>
         Description: <input type="text" name="description" id=""><br>
