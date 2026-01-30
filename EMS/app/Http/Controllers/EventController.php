@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 
 class EventController extends Controller
 {
+    public function index(){
+         $eve = Events::all();
+        return view("events", compact('eve'));
+    }
     //Add Events
     public function addEvent(Request $request)
     {
@@ -64,8 +68,14 @@ class EventController extends Controller
     //Show All Events
     public function showAllEvent()
     {
-        $data = DB::table('events')->get();
+        $data = Events::paginate(1);
         return view("events", compact('data'));
     }
 
+    public function searchEvent(Request $request){
+        // $search=Events::find($id);
+        $search=$request->search;
+        $data=Events::where('title','like','%'.$search.'%')->get();
+        return view("events",compact('data'));
+    }
 }
