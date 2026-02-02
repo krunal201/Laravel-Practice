@@ -8,18 +8,22 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <style>
+        .w-5.h-5 {
+            width: 15px;
+            height: 15px;
+        }
+        nav{
+            padding: 50px;
+        }
     </style>
 </head>
 
 <body>
     <h1>All Events</h1>
 
-
-    <nav>
         <ul>
             <li><a href="{{ route('event.uploadEvent') }}">Add Event</a></li>
         </ul>
-    </nav>
 
     <form action="{{ route('event.searchEvent') }}" method="get">
         @csrf
@@ -50,11 +54,11 @@
             <div class="col border">
                 Time
             </div>
-            
+
             <div class="col border">
                 Location
             </div>
-            
+
             <div class="col border">
                 Image
             </div>
@@ -64,49 +68,52 @@
             </div>
         </div>
 
-        
+
         @foreach ($data as $d)
-        <div class="row">
-            <div class="col border">
-                {{ $d->id }}
-            </div>
-            <div class="col border">
-                {{ $d->title }}
-            </div>
-            <div class="col border">
-                {{ $d->description }}
-            </div>
+            <div class="row">
+                <div class="col border">
+                    {{ $d->id }}
+                </div>
+                <div class="col border">
+                    {{ $d->title }}
+                </div>
+                <div class="col border">
+                    {{ $d->description }}
+                </div>
 
-            <div class="col border">
-                {{ $d->category_id }}
-            </div>
-            
-            <div class="col border">
-                {{ $d->date }}
-            </div>
+                <div class="col border">
+                    {{ $d->category_id }}
+                </div>
 
-            <div class="col border">
-                {{ $d->time }}
-            </div>
-            
-            <div class="col border">
-                {{ $d->location }}
-            </div>
-            
-            <div class="col border">
-                <img src="{{ asset('storage/' . $d->image) }}" alt="Image" srcset="" width="100px" height="100px">
-            </div>
-            <div class="col border">
-                <a href="{{ route('event.updateEventView', $d->id) }}">Update</a>
-                 <form action="{{ route('event.deleteEvent', $d->id) }}" method="post">
+                <div class="col border">
+                    {{ $d->date }}
+                </div>
+
+                <div class="col border">
+                    {{ $d->time }}
+                </div>
+
+                <div class="col border">
+                    {{ $d->location }}
+                </div>
+
+                <div class="col border">
+                    <img src="{{ asset('storage/' . $d->image) }}" alt="Image" srcset="" width="100px" height="100px">
+                </div>
+                <div class="col border">
+                    <a href="{{ route('event.updateEventView', $d->id) }}">Update</a>
+                    <form action="{{ route('event.deleteEvent', $d->id) }}" method="post">
                         @csrf
                         @method('DELETE')
                         <button type="submit">Delete</button>
                     </form>
+                </div>
             </div>
-        </div>
         @endforeach
     </div>
+    @if ($data instanceof \Illuminate\Pagination\LengthAwarePaginator)
+        <center>{{ $data->links() }}</center>
+    @endif
 
     <!-- <table border="1">
         <tr>
@@ -138,9 +145,7 @@
                 </td>
             </tr>
     </table> -->
-    @if ($data instanceof \Illuminate\Pagination\LengthAwarePaginator)
-        {{ $data->links() }}
-    @endif
+
 </body>
 
 </html>
