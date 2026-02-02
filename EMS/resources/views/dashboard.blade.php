@@ -9,8 +9,8 @@
     <h1>You are admin</h1>
     <nav>
         <ul>
-            <li><a href="{{ route('events') }}">Events</a></li>
-            <li><a href="{{ route('users') }}">Users</a></li>
+            <li><a href="{{ route('events.event') }}">Events</a></li>
+            <li><a href="{{ route('user.users') }}">Users</a></li>
             <li><a href="{{ route('registration') }}">Registration</a></li>
         </ul>
     </nav>
