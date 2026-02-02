@@ -69,8 +69,6 @@ Route::post("/registrations",[RegistrationController::class,'filterReg'])->name(
 Route::get("/recentregistration",[RegistrationController::class,'recentReg'])->name("registration.recent");
 
 
-
-// routes/web.php
 //livewire
 Route::view('/dish', 'demo')->name('dish-table'); 
 
