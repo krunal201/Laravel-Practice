@@ -6,17 +6,21 @@
     <title>Dashboard</title>
 </head>
 <body>
-    <h1>You are admin</h1>
-    <nav>
-        <ul>
-            <li><a href="{{ route('events.event') }}">Events</a></li>
-            <li><a href="{{ route('user.users') }}">Users</a></li>
-            <li><a href="{{ route('registration') }}">Registration</a></li>
-        </ul>
-    </nav>
-    <form action="{{ route('logout') }}" method="post">
-        @csrf
-        <button>Logout</button>
-    </form>
+    @can('access-dashboard')
+        <h1>You are admin</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ route('events.event') }}">Event</a></li>
+                <li><a href="{{ route('user.users') }}">User</a></li>
+                <li><a href="{{ route('registration') }}">Registration</a></li>
+                <li><a href="{{ route('event.recentEvents') }}">Recent Event</a></li>
+                <li><a href="{{ route('registration.recent') }}">Recent Registration</a></li>
+            </ul>
+        </nav>
+        <form action="{{ route('logout') }}" method="post">
+            @csrf
+            <button>Logout</button>
+        </form>
+    @endcan
 </body>
 </html>

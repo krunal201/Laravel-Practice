@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use DB;
 use App\Models\Events;
 use Illuminate\Http\Request;
+use Log;
 
 class EventController extends Controller
 {
-    public function index(){
-         $eve = Events::all();
-        return view("events", compact('eve'));
+    public function index()
+    {
+        $data = Events::all();
+        return view("events", compact('data'));
     }
     //Add Events
     public function addEvent(Request $request)
@@ -27,40 +29,42 @@ class EventController extends Controller
 
         return redirect('/events');
     }
-    
+
     //Return view for update events
-    public function updateEventView($id){
-        $event=Events::findOrFail($id);
-        return view('updateEvent',compact('event'));
+    public function updateEventView($id)
+    {
+        $event = Events::findOrFail($id);
+        return view('updateEvent', compact('event'));
     }
     //Upadte Events
-    public function updateEvent(Request $request,$id){
+    public function updateEvent(Request $request, $id)
+    {
 
-        $event=Events::findOrFail($id);
-        $event->title=$request->title;
-        $event->description=$request->description;
-        $event->category_id=$request->cat_id;
-        $event->date=$request->date;
-        $event->time=$request->time;
-        $event->location=$request->location;
+        $event = Events::findOrFail($id);
+        $event->title = $request->title;
+        $event->description = $request->description;
+        $event->category_id = $request->cat_id;
+        $event->date = $request->date;
+        $event->time = $request->time;
+        $event->location = $request->location;
 
-        $filesEx=NULL;
-        if($request->hasFile('file')){
-            if($event->image && file_exists(public_path('storage/'.$event->image))){
-                unlink(public_path('storage/'.$event->image));
+        $filesEx = NULL;
+        if ($request->hasFile('file')) {
+            if ($event->image && file_exists(public_path('storage/' . $event->image))) {
+                unlink(public_path('storage/' . $event->image));
             }
-            $filesEx=$request->file('file')->store('uploads','public');
-            $event->image=$filesEx;
+            $filesEx = $request->file('file')->store('uploads', 'public');
+            $event->image = $filesEx;
         }
-
 
         $event->save();
         return redirect('/events');
     }
 
     //Delete Event
-    public function deleteEvent($id){
-        $event=Events::findOrFail($id);
+    public function deleteEvent($id)
+    {
+        $event = Events::findOrFail($id);
         $event->delete();
         return redirect('/events');
     }
@@ -72,10 +76,20 @@ class EventController extends Controller
         return view("events", compact('data'));
     }
 
-    public function searchEvent(Request $request){
+    public function searchEvent(Request $request)
+    {
         // $search=Events::find($id);
-        $search=$request->search;
-        $data=Events::where('title','like','%'.$search.'%')->get();
-        return view("events",compact('data'));
+        $search = $request->search;
+        $data = Events::where('title', 'like', '%' . $search . '%')->get();
+        return view("events", compact('data'));
+    }
+
+    //Recent Events
+    public function recentEvent()
+    {
+        $start_date = date('Y-m-d', strtotime('-30 days'));
+        $end_date = date('Y-m-d');
+        $recent = Events::whereBetween('date', [$start_date, $end_date])->get();
+        return view('recentevent', compact('recent'));
     }
 }

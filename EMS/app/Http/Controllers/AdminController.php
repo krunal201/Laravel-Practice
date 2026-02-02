@@ -18,12 +18,20 @@ class AdminController extends Controller
         if ($admin && $password === $admin->password) {
             Auth::loginUsingId($admin->id);
             session()->put('email', $email);
+            session()->put('role', 'admin');
             return redirect('dashboard');
         }
     }
 
     public function resetPassword(Request $request)
     {
+        $email=$request->input('email');
+        $pass=$request->input('password');
+        $encPass=base64_encode($pass);
+        $up=Admins::where($email)->update([
+            'password'=>$encPass
+        ]);
+        return redirect('/login');
     }
 
     public function logout()
