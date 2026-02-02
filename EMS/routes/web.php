@@ -3,6 +3,8 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\UserController;
 use App\Models\Categories;
 use App\Models\Events;
 use Illuminate\Support\Facades\Route;
@@ -36,7 +38,7 @@ Route::delete("/deletecategories/{id}",[CategoryController::class,'deleteCategor
 
 //Event routes
 // Route::view("/events","events")->name('events');
-Route::get("/events",[EventController::class,'index']);
+Route::get("/events",[EventController::class,'index'])->name('events.event');
 Route::get("/events",[EventController::class,'showAllEvent'])->name("event.AllEvents");
 
 //Add Events
@@ -53,12 +55,15 @@ Route::delete('/deleteevent/{id}',[EventController::class,'deleteEvent'])->name(
 Route::get('/search',[EventController::class,'searchEvent'])->name('event.searchEvent');
 
 //User
-Route::view("/users","users")->name('users');
+// Route::view("/users","users")->name('user.users');
+Route::get('/users',[UserController::class,'index'])->name('user.users');
+Route::get('/reguser',[UserController::class,'registerdUser'])->name('user.rgusers');
 
 //Registration
-Route::view("/registrations","registrations")->name('registration');
+Route::get("/registrations",[RegistrationController::class,'index'])->name('registration');
+
 
 // routes/web.php
-
+//livewire
 Route::view('/dish', 'demo')->name('dish-table'); 
 
