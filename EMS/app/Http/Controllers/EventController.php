@@ -27,7 +27,7 @@ class EventController extends Controller
             "image" => $request->file('file')->store('uploads', 'public'),
         ]);
 
-        return redirect('/events');
+        return redirect('/event');
     }
 
     //Return view for update events
@@ -58,7 +58,7 @@ class EventController extends Controller
         }
 
         $event->save();
-        return redirect('/events');
+        return redirect('/event');
     }
 
     //Delete Event
@@ -72,7 +72,7 @@ class EventController extends Controller
     //Show All Events
     public function showAllEvent()
     {
-        $data = Events::paginate(1);
+        $data = Events::paginate(2);
         return view("events", compact('data'));
     }
 
