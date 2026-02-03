@@ -9,6 +9,7 @@
 </head>
 <body>
    <div class="container mt-4">
+    <h3>Recent Events</h3>
     <div class="row">
         @foreach ($recent as $r)
             <div class="col-md-4 mb-3">

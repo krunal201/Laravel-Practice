@@ -13,7 +13,7 @@
         @method('PUT')
         <div class="mb-3">
             <label for="" class="form-lable">Name</label>
-        <input type="text" name="name" id="" value="{{ old('name', $category->name) }}" class="form-control @error('name') is-invalid @enderror"><br></div>
+        <input type="text" name="name" id="" value="{{ old('name', $category->name) }}" class="form-control"><br></div>
         <button class="btn btn-success">Update</button>
     </form>
     </div>

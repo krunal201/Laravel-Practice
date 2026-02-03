@@ -10,7 +10,7 @@
     <div class="container mt-5">
     <h1 class="mb-4 text-primary">All Users</h1>
 
-    <a href="{{ route('user.rgusers') }}" class="btn btn-success mb-3">List Registered Users</a>
+    <a href="{{ route('user.rgusers') }}" class="btn btn-success mb-3">Click to see List of Registered Users</a>
 
     <table class="table table-striped table-bordered table-hover">
         <thead class="table-dark">

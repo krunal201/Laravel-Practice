@@ -10,7 +10,7 @@
 
 <body>
     <div class="container mt-5">
-        <h1 class="mb-4 text-primary">All Registered Users</h1>
+        <h1 class="mb-4 text-primary">Event Registered Users</h1>
 
         <!-- <a href="{{ route('user.rgusers') }}" class="btn btn-success mb-3">List Registered Users</a> -->
 

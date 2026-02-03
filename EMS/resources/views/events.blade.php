@@ -18,7 +18,7 @@
     </style>
 </head>
 
-<body>
+<!-- <body>
     <h1>All Events</h1>
 
         <ul>
@@ -115,7 +115,7 @@
         <center>{{ $data->links() }}</center>
     @endif
 
-    <!-- <table border="1">
+ <table border="1">
         <tr>
             <th>ID</th>
             <th>Title</th>
@@ -144,8 +144,63 @@
                    
                 </td>
             </tr>
-    </table> -->
+    </table> 
 
+</body> -->
+<body class="bg-light">
+
+<div class="container my-5">
+    <h1 class="mb-4 text-center">All Events</h1>
+
+    <div class="mb-3 d-flex justify-content-between flex-wrap">
+        <a href="{{ route('event.uploadEvent') }}" class="btn btn-primary mb-2">Add Event</a>
+
+        <form action="{{ route('event.searchEvent') }}" method="get" class="d-flex mb-2">
+            @csrf
+            <input type="text" name="search" class="form-control form-control-sm me-2" placeholder="Search events">
+            <button class="btn btn-sm btn-secondary" type="submit">Search</button>
+        </form>
+    </div>
+
+    <div class="row g-4">
+        @foreach ($data as $d)
+            <div class="col-md-4 col-lg-3">
+                <div class="card h-100 shadow-sm">
+                    <img src="{{ asset('storage/' . $d->image) }}" class="card-img-top" alt="{{ $d->title }}" style="height:200px; object-fit:cover;">
+
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">{{ $d->title }}</h5>
+                        <p class="card-text small text-truncate" title="{{ $d->description }}">{{ $d->description }}</p>
+                        <ul class="list-group list-group-flush mb-2">
+                            <li class="list-group-item p-1"><strong>Category:</strong> {{ $d->category_id }}</li>
+                            <li class="list-group-item p-1"><strong>Date:</strong> {{ $d->date }}</li>
+                            <li class="list-group-item p-1"><strong>Time:</strong> {{ $d->time }}</li>
+                            <li class="list-group-item p-1"><strong>Location:</strong> {{ $d->location }}</li>
+                        </ul>
+
+                        <div class="mt-auto d-flex justify-content-between">
+                            <a href="{{ route('event.updateEventView', $d->id) }}" class="btn btn-sm btn-warning">Update</a>
+                            <form action="{{ route('event.deleteEvent', $d->id) }}" method="post" class="d-inline">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    </div>
+
+    @if ($data instanceof \Illuminate\Pagination\LengthAwarePaginator)
+        <div class="mt-4 d-flex justify-content-center">
+            {{ $data->links() }}
+        </div>
+    @endif
+</div>
+
+<!-- Bootstrap 5 JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

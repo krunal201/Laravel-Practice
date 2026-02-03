@@ -15,6 +15,7 @@
             <option value="none">Select Title</option>
             <option value="Conference" {{ request('fil') == 'Conference' ? 'selected' : '' }}>Conference</option>
             <option value="Person's Concert" {{ request('fil') == "Person's Concert" ? 'selected' : '' }} >Person's Concert</option>
+            <option value="Webinar" {{ request('fil') == "Webinar" ? 'selected' : '' }} >Webinar</option>
         </select>
         <button>Filter</button>
 
