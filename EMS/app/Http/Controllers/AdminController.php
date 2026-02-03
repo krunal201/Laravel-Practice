@@ -21,7 +21,7 @@ class AdminController extends Controller
             session()->put('role', 'admin');
             return redirect('dashboard');
         }else{
-            session()->put('error', 'Cannot');
+            session()->put('error', 'Wrong Credentials');
             // return redirect('/');
         }
     }
@@ -34,7 +34,7 @@ class AdminController extends Controller
         $up=Admins::where('email', $email)->update([
             'password'=>$encPass
         ]);
-        return redirect('/login');
+        return redirect()->back();
     }
 
     public function logout()

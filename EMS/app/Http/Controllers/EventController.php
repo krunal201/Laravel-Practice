@@ -11,7 +11,7 @@ class EventController extends Controller
 {
     public function index()
     {
-        $data = Events::all();
+        $data = Events::paginate(2);
         return view("events", compact('data'));
     }
     //Add Events
@@ -69,7 +69,7 @@ class EventController extends Controller
         return redirect('/events');
     }
 
-    //Show All Events
+    //Show All Events in paginate
     public function showAllEvent()
     {
         $data = Events::paginate(2);

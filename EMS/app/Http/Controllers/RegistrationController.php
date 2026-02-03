@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class RegistrationController extends Controller
 {
     public function index(){
-        $reg=DB::table('registrations')->rightJoin('events','registrations.event_id','=','events.id')->get();
+        $reg=DB::table('registrations')->leftJoin('events','registrations.event_id','=','events.id')->get();
         return view('registrations',compact('reg'));
     }
 
@@ -18,7 +18,7 @@ class RegistrationController extends Controller
         $fil=$request->get('fil');
         // $reg=DB::table('registrations')->rightJoin('events','registrations.event_id','=','events.id')->where('events.title','=',$request->get("fil"));
 
-        $qry=DB::table('registrations')->rightJoin('events','registrations.event_id','=','events.id');
+        $qry=DB::table('registrations')->leftJoin('events','registrations.event_id','=','events.id');
         
         if($fil){
             $qry->where('events.title','=',$fil);
