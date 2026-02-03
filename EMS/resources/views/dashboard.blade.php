@@ -21,6 +21,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
+                        <a class="nav-link" href="{{ route('category.list') }}">Category</a>
                         <a class="nav-link" href="{{ route('events.event') }}">Event</a>
                         <a class="nav-link" href="{{ route('user.users') }}">User</a>
                         <a class="nav-link" href="{{ route('registration') }}">Registration</a>
