@@ -20,6 +20,9 @@ class AdminController extends Controller
             session()->put('email', $email);
             session()->put('role', 'admin');
             return redirect('dashboard');
+        }else{
+            session()->put('error', 'Cannot');
+            // return redirect('/');
         }
     }
 
@@ -28,7 +31,7 @@ class AdminController extends Controller
         $email=$request->input('email');
         $pass=$request->input('password');
         $encPass=base64_encode($pass);
-        $up=Admins::where($email)->update([
+        $up=Admins::where('email', $email)->update([
             'password'=>$encPass
         ]);
         return redirect('/login');
